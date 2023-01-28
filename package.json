@@ -1,0 +1,20 @@
+{
+  "name": "tp_contact_pro_manager",
+  "version": "1.0.0",
+  "description": "Conception d'un gestionnaire de contact avec le framework Express de NodeJS.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alain-guillon-it/TP_Contact_Pro_Manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alain-guillon-it/TP_Contact_Pro_Manager/issues"
+  },
+  "homepage": "https://github.com/alain-guillon-it/TP_Contact_Pro_Manager#readme"
+}

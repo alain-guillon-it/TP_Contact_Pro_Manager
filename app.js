@@ -17,6 +17,13 @@ require("./db/database");
 
 /**
  * ================================================================
+ * Import du "Routing"
+ * ================================================================
+ */
+const router = require("./routes/interface.routes");
+
+/**
+ * ================================================================
  * Application
  * ================================================================
  */
@@ -39,38 +46,10 @@ const HOSTNAME = process.env.HOSTNAME || "localhost";
 
 /**
  * ================================================================
- * Une première route modifié pour utiliser le moteur de rendue
+ * Ajout du Router
  * ================================================================
  */
-app.get(["/", "/home"], (req, res) => {
-  res.status(200).render("pages/home", {
-    data: {
-      head: {
-        title: "Accueil",
-      },
-    },
-  });
-});
-
-app.get("/contact/add", (req, res) => {
-  res.status(200).render("pages/add-contact", {
-    data: {
-      head: {
-        title: "Ajout d'un nouveau contact",
-      },
-    },
-  });
-});
-
-app.get("/contact/edit", (req, res) => {
-  res.status(200).render("pages/edit-contact", {
-    data: {
-      head: {
-        title: "Edition d'un contact",
-      },
-    },
-  });
-});
+app.use("/", router.interface);
 
 /**
  * ================================================================

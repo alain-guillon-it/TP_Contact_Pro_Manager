@@ -69,6 +69,6 @@ app.listen(PORT, () => {
     )
   );
   console.log(
-    "\t\t\t\t\t\t\t\tBy Alain GUILLON".cyan.italic + " - DFS26C".italic.bold
+    "\t\t\t\t\t\t\t\tBy Alain GUILLON".green.italic + " - DFS26C".italic.bold
   );
 });

@@ -24,6 +24,13 @@ const app = express();
 
 /**
  * ================================================================
+ * Utilisation du moteur de rendue "EJS"
+ * ================================================================
+ */
+app.set("view engine", "ejs");
+
+/**
+ * ================================================================
  * Définition du HOSTNAME d'écoute et du HOSTNAME utilisé
  * ================================================================
  */
@@ -32,11 +39,23 @@ const HOSTNAME = process.env.HOSTNAME || "localhost";
 
 /**
  * ================================================================
- * Une première route
+ * Une première route modifié pour utiliser le moteur de rendue
  * ================================================================
  */
-app.get("/", (req, res) => {
-  res.status(200).send("Première route");
+app.get(["/", "/home"], (req, res) => {
+  try {
+    res.status(200).render("pages/home");
+  } catch (e) {
+    console.log({ ERRORROROROROROROOOOR: e });
+  }
+});
+
+app.get("/contact/add", (req, res) => {
+  res.status(200).render("pages/add-contact");
+});
+
+app.get("/contact/edit", (req, res) => {
+  res.status(200).render("pages/edit-contact");
 });
 
 /**

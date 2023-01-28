@@ -16,11 +16,12 @@
           <div class="row">
             <!-- Nom -->
             <div class="col-6">
-              <label for="lastname" class="form-label text-dark">Nom:</label>
+              <label for="lastname" class="form-label text-dark">Nom</label>
               <input
                 aria-describedby="lastnameHelp"
                 class="form-control"
                 id="lastname"
+                name="lastname"
                 placeholder="Dupond"
                 type="text"
                 autofocus
@@ -31,13 +32,12 @@
             </div>
             <!-- Prénom -->
             <div class="col-6">
-              <label for="firstname" class="form-label text-dark"
-                >Prénom:</label
-              >
+              <label for="firstname" class="form-label text-dark">Prénom</label>
               <input
                 type="text"
                 class="form-control"
                 id="firstname"
+                name="firstname"
                 aria-describedby="firstnameHelp"
                 placeholder="Jean"
               />
@@ -50,11 +50,12 @@
           <div class="row my-4">
             <!-- Email -->
             <div class="col-6">
-              <label for="email" class="form-label text-dark">Email:</label>
+              <label for="email" class="form-label text-dark">Email</label>
               <input
                 aria-describedby="lastnameHelp"
                 class="form-control"
                 id="email"
+                name="email"
                 placeholder="j.dupond@mon_email.com"
                 type="email"
               />
@@ -64,11 +65,12 @@
             </div>
             <!-- Téléphone -->
             <div class="col-6">
-              <label for="phone" class="form-label text-dark">Téléphone:</label>
+              <label for="phone" class="form-label text-dark">Téléphone</label>
               <input
                 type="tel"
                 class="form-control"
                 id="phone"
+                name="phone"
                 aria-describedby="phoneHelp"
                 placeholder="0600000000"
               />
@@ -81,15 +83,13 @@
           <div class="row my-4">
             <!-- Industrie -->
             <div class="col-6">
-              <label for="industry" class="form-label text-dark"
-                >Téléphone:</label
-              >
+              <label for="sector" class="form-label text-dark">Secteur</label>
               <select
                 class="form-select"
-                id="industry"
-                name="industry"
+                id="sector"
+                name="sector"
                 aria-label="Default select empty"
-                aria-describedby="industryHelp"
+                aria-describedby="sectorHelp"
               >
                 <option selected>...</option>
                 <option value="informatique">Informatique</option>
@@ -97,17 +97,18 @@
                 <option value="sante">Corps médicale</option>
                 <option value="industrie">Industrie</option>
               </select>
-              <div id="industryHelp" class="form-text">
-                <i>Vous devez saisir un élément dans la liste</i>
+              <div id="sectorHelp" class="form-text">
+                <i>Vous devez choisir un élément</i>
               </div>
             </div>
             <!-- Société -->
             <div class="col-6">
-              <label for="society" class="form-label text-dark">Société:</label>
+              <label for="society" class="form-label text-dark">Société</label>
               <input
                 aria-describedby="societyHelp"
                 class="form-control"
                 id="society"
+                name="society"
                 placeholder="Campus Numérique"
                 type="text"
               />
@@ -120,24 +121,24 @@
           <div class="row">
             <!-- Numéro de rue -->
             <div class="col-2">
-              <label for="number" class="form-label text-dark">N°</label>
+              <label for="streetNumber" class="form-label text-dark">N°</label>
               <input
                 min="1"
                 max="9999"
                 type="number"
-                name="number"
-                id="number"
+                name="streetNumber"
+                id="streetNumber"
                 class="form-control"
-                aria-describedby="numberHelp"
+                aria-describedby="streetNumberHelp"
                 placeholder="777"
               />
-              <div id="numberHelp" class="form-text">
+              <div id="streetNumberHelp" class="form-text">
                 <i>Saisie un numéro</i>
               </div>
             </div>
             <!-- Type de rue -->
             <div class="col-2">
-              <label for="typeStreet" class="form-label text-dark">Type:</label>
+              <label for="typeStreet" class="form-label text-dark">Type</label>
               <select
                 class="form-select"
                 id="typeStreet"
@@ -174,7 +175,7 @@
             </div>
             <!-- Code Postal -->
             <div class="col-2">
-              <label for="codePostal" class="form-label text-dark">Type:</label>
+              <label for="codePostal" class="form-label text-dark">CP</label>
               <input
                 min="1"
                 max="99999"
@@ -201,9 +202,9 @@
               <button
                 type="submit"
                 id="new-contact-submit"
-                class="btn btn-outline-primary btn-lg btn-block"
+                class="btn btn-outline-primary btn-lg btn-block text-uppercase"
               >
-                AJOUTER
+                Ajouter ce contact
               </button>
             </div>
           </div>

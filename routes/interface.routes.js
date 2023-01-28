@@ -7,54 +7,32 @@ const router = require("express").Router();
 
 /**
  * ================================================================
+ * Controller
+ * ================================================================
+ */
+const myController = require("../controllers/Interface");
+
+/**
+ * ================================================================
  * ROUTER GET
  * ================================================================
  */
-router.get(["/", "/home"], (req, res, next) => {
-  res.status(200).render("pages/home", {
-    data: {
-      head: {
-        title: "Accueil",
-      },
-    },
-  });
-});
-router.get(["/contact", "/contact/edit", "/contact/delete"]);
-router.get("/contact/add", (req, res, next) => {
-  res.status(200).render("pages/add-contact", {
-    data: {
-      head: {
-        title: "Ajout d'un nouveau contact",
-      },
-    },
-  });
-});
-router.get("/contact/edit/:id", (req, res, next) => {
-  res.status(200).render("pages/edit-contact", {
-    data: {
-      head: {
-        title: "Edition d'un contact",
-      },
-    },
-  });
-});
-
-router.get("/contact/delete/:id");
+router.get(["/", "/home"], myController.getHome);
+router.get(
+  ["/contact", "/contact/edit", "/contact/delete"],
+  myController.getRedirectToHome
+);
+router.get("/contact/add", myController.getCreateContact);
+router.get("/contact/edit/:id", myController.getUpdateContact);
+router.get("/contact/delete/:id", myController.getDeleteContact);
 
 /**
  * ================================================================
  * ROUTER POST
  * ================================================================
  */
-router.post("/contact/add", (req, res, next) => {
-  res.status(200).render("pages/add-contact", {
-    data: {
-      head: {
-        title: "Ajout d'un nouveau contact",
-      },
-    },
-  });
-});
+router.post("/contact/add", myController.postCreateContact);
+router.post("/contact/edit/:id", myController.postUpdateContact);
 
 /**
  * ================================================================

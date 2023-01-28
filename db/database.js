@@ -22,7 +22,7 @@ const mongoose = require("mongoose");
 const PSEUDO = process.env.MONGODB_PSEUDO;
 const PASSWORD = process.env.MONGODB_PASSWORD;
 const CLIENT_NAME = process.env.MONGODB_CLIENT_NAME;
-const COLLECTION_NAME = process.env.MONGODB_COLLECTION_NAME;
+const DATABASE_NAME = process.env.MONGODB_DATABASE_NAME;
 
 /**
  * ================================================================
@@ -41,7 +41,7 @@ mongoose.set("strictQuery", true);
  */
 mongoose
   .connect(
-    `mongodb+srv://${PSEUDO}:${PASSWORD}@${CLIENT_NAME}.d51otgm.mongodb.net/${COLLECTION_NAME}`,
+    `mongodb+srv://${PSEUDO}:${PASSWORD}@${CLIENT_NAME}.d51otgm.mongodb.net/${DATABASE_NAME}`,
     {
       useUnifiedTopology: true,
       useNewUrlParser: true,
@@ -50,10 +50,10 @@ mongoose
   .then(() => {
     console.log(
       boxen(
-        "Connexion réussi à la base de donnée ".grey +
+        "Connexion réussi au client ".grey +
           `${CLIENT_NAME}`.green.bold +
-          " qui contient la collection : ".grey +
-          `${COLLECTION_NAME}`.blue.bold,
+          " qui contient la database : ".grey +
+          `${DATABASE_NAME}`.blue.bold,
         {
           float: "left",
           dimBorder: false,
@@ -76,36 +76,50 @@ mongoose
       )
     );
     console.log(
-      "\t\t\t\t\t\t\t\t\t\t\t\tBy Alain GUILLON".green.italic +
+      "\t\t\t\t\t\t\t\t\t\t\tBy Alain GUILLON".green.italic +
         " - DFS26C".italic.bold
     );
   })
   .catch((err) => {
     console.log(
-      boxen(
-        "Connexion échoué à la base de donnée ".grey + `${CLIENT_NAME}`.red.bold,
-        {
-          float: "left",
-          dimBorder: false,
-          title: " ❌ - Echec DB Connexion : ",
-          titleAlignment: "right",
-          borderColor: "red",
-          borderStyle: "round",
-          margin: {
-            top: 1,
-            bottom: 0,
-            left: 4,
-          },
-          padding: {
-            top: 1,
-            bottom: 1,
-            left: 12,
-            right: 12,
-          },
-        }
-      )
+      boxen("Connexion échoué au client ".grey + `${CLIENT_NAME}`.red.bold, {
+        float: "left",
+        dimBorder: false,
+        title: " ❌ - Echec DB Connexion : ",
+        titleAlignment: "right",
+        borderColor: "red",
+        borderStyle: "round",
+        margin: {
+          top: 1,
+          bottom: 0,
+          left: 4,
+        },
+        padding: {
+          top: 1,
+          bottom: 1,
+          left: 12,
+          right: 12,
+        },
+      })
     );
     console.log(
-      "\t\t\t\t\t\tBy Alain GUILLON".green.italic + " - DFS26C".italic.bold
+      "\t\t\t\t\tBy Alain GUILLON".green.italic + " - DFS26C".italic.bold
+    );
+    console.log(
+      boxen(err.stack.red.bold, {
+        float: "left",
+        title: " ℹ - Stack d'erreur",
+        borderStyle: "classic",
+        borderColor: "red",
+        padding: 1,
+        margin: {
+          top: 1,
+          left: 4,
+        },
+      })
+    );
+    console.log(
+      "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tBy Alain GUILLON".green.italic +
+        " - DFS26C".italic.bold
     );
   });

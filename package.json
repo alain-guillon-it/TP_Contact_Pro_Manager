@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/alain-guillon-it/TP_Contact_Pro_Manager/issues"
   },
-  "homepage": "https://github.com/alain-guillon-it/TP_Contact_Pro_Manager#readme"
+  "homepage": "https://github.com/alain-guillon-it/TP_Contact_Pro_Manager#readme",
+  "dependencies": {
+    "boxen": "5.1.2",
+    "colors": "^1.4.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
+  }
 }

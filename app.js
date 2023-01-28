@@ -37,33 +37,38 @@ app.get("/", (req, res) => {
  * Démarrer le server selon le port d'écoute utilisé
  * ================================================================
  */
-app.listen(PORT, () =>
+app.listen(PORT, () => {
   console.log(
     boxen(
-      "Serveur démarrer à cette adresse: ".gray +
+      "✅ - Serveur démarrer à cette adresse: ".gray +
         "http://" +
-        `${HOSTNAME}`.yellow.bold +
+        `${HOSTNAME}`.red.bold +
         ":" +
         `${PORT}`.cyan.bold,
       {
         float: "left",
         dimBorder: false,
-        title: "Connexion au serveur",
+        title:
+          "ℹ - Connexion au serveur pour le projet : " +
+          "TP_Contact_Pro_Manager".magenta.bold,
         titleAlignment: "right",
-        borderColor: "green",
+        borderColor: "blue",
         borderStyle: "round",
         margin: {
           top: 1,
-          bottom: 1,
+          bottom: 0,
           left: 4,
         },
         padding: {
           top: 1,
           bottom: 1,
-          left: 10,
-          right: 10,
+          left: 12,
+          right: 12,
         },
       }
     )
-  )
-);
+  );
+  console.log(
+    "\t\t\t\t\t\t\t\tBy Alain GUILLON".cyan.italic + " - DFS26C".italic.bold
+  );
+});

@@ -43,19 +43,33 @@ const HOSTNAME = process.env.HOSTNAME || "localhost";
  * ================================================================
  */
 app.get(["/", "/home"], (req, res) => {
-  try {
-    res.status(200).render("pages/home");
-  } catch (e) {
-    console.log({ ERRORROROROROROROOOOR: e });
-  }
+  res.status(200).render("pages/home", {
+    data: {
+      head: {
+        title: "Accueil",
+      },
+    },
+  });
 });
 
 app.get("/contact/add", (req, res) => {
-  res.status(200).render("pages/add-contact");
+  res.status(200).render("pages/add-contact", {
+    data: {
+      head: {
+        title: "Ajout d'un nouveau contact",
+      },
+    },
+  });
 });
 
 app.get("/contact/edit", (req, res) => {
-  res.status(200).render("pages/edit-contact");
+  res.status(200).render("pages/edit-contact", {
+    data: {
+      head: {
+        title: "Edition d'un contact",
+      },
+    },
+  });
 });
 
 /**

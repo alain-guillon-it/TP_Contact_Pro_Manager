@@ -1,0 +1,27 @@
+
+      <footer class="mt-auto text-white-50 d-flex justify-content-around">
+        <p>Copyright &copy; - 2023</p>
+        <p class="text-secondary">
+          by <span class="text-info">Alain GUILLON</span> -
+          <span class="text-warning">DFS26C</span>
+        </p>
+      </footer>
+    </main>
+
+    <script>
+      let btnDeletes = document.querySelectorAll(".btn-delete");
+
+      btnDeletes.forEach((btnDelete) => {
+        // ajoute l'évènement click sur chaque bouton
+        btnDelete.addEventListener("click", (e) => {
+          if (window.confirm("Voulez vous supprimer ce contact ?")) {
+            // redirige vers l'url /contact/delete/id
+            window.location.href = `/contact/delete/${btnDelete.getAttribute(
+              "data-id"
+            )}`;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

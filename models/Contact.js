@@ -48,7 +48,7 @@ const ContactSchema = mongoose.Schema(
       max: 9999,
       required: true,
     },
-    typeStreet: {
+    streetType: {
       type: String,
       required: false,
       default: null,

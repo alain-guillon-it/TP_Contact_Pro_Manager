@@ -2,83 +2,83 @@
 
 <!-- PROJET -->
 <div class="p-5 text-center">
-  <div class="row">
-    <div class="col-12 card shadow mx-auto mt-5 p-4">
-      <h1 class="text-uppercase mt-5 text-secondary">Contacts professionnel</h1>
-      <!-- Ajout d'un nouveau contact -->
-      <div class="my-4 text-start">
-        <a href="/contact/add" class="btn btn-outline-primary"
-          >Ajouter un nouveau contact</a
-        >
+  <div class="col-12 card shadow mx-auto px-5">
+    <h1 class="text-uppercase mt-5 text-secondary">Contact Pro Manager</h1>
+    <hr class="border border-dark border-2 opacity-50 my-2" />
+
+    <!-- Ajout d'un nouveau contact -->
+    <div class="mt-2 mb-3 text-start">
+      <a href="/contact/add" class="btn btn-outline-primary"
+        >Ajouter un nouveau contact</a
+      >
+    </div>
+
+    <!-- Tableau contenant toutes les données respectivement récupérer depuis la base de donnée -->
+    <div class="card-content table-responsive">
+      <% if ( data.body.length > 0) { %>
+      <table
+        class="table table-bordered border-dark table-sm table-secondary table-hover table-striped"
+      >
+        <caption class="text-end">
+          <% if (data.body.length == 1) { %> Mon contact professionnel. <% }
+          else { %> Tableau représentant la liste de mes <%= data.body.length %>
+          contacts professionnel. <% } %>
+        </caption>
+        <thead class="table-dark">
+          <tr class="align-middle">
+            <th scope="col">Nom Complet</th>
+            <th scope="col">Email</th>
+            <th scope="col">Société</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Secteur</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.body.forEach(contact => { %>
+          <tr>
+            <td class="my-1">
+              <%= contact.lastname %> <%= contact.firstname %>
+            </td>
+            <td class="my-1"><%= contact.email %></td>
+            <td class="my-1"><%= contact.society %></td>
+            <td class="my-1">
+              <%= contact.streetNumber %> <%= contact.streetType %> <%=
+              contact.address %>, <%= contact.codePostal %>
+            </td>
+            <td class="my-1"><%= contact.phone %></td>
+            <td class="my-1"><%= contact.sector %></td>
+            <td class="d-flex justify-content-around">
+              <a
+                href="/contact/show/1"
+                id="a-show-1"
+                class="btn btn-success btn-sm"
+                >Voir</a
+              >
+              <a
+                href="/contact/edit/1"
+                id="a-edit-1"
+                class="btn btn-warning btn-sm"
+                >Editer</a
+              >
+              <button
+                id="btn-delete-1"
+                data-id="1"
+                class="btn btn-danger btn-delete btn-sm"
+              >
+                Supprimer
+              </button>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <% } else { %>
+      <div class="alert alert-warning">
+        <p>Aucun contact à présenter actuellement.</p>
       </div>
-      <!-- Tableau contenant toutes les données respectivement récupérer depuis la base de donnée -->
-      <div class="card-content table-responsive">
-        <% if ( data.body.length > 0) { %>
-        <table
-          class="table table-bordered border-dark table-sm table-secondary table-hover table-striped"
-        >
-          <caption class="text-end">
-            Tableau représentant la listes de mes contacts professionnel
-          </caption>
-          <thead class="table-dark">
-            <tr class="align-middle">
-              <th scope="col">Nom</th>
-              <th scope="col">Prénom</th>
-              <th scope="col">Email</th>
-              <th scope="col">Société</th>
-              <th scope="col">Adresse</th>
-              <th scope="col">Téléphone</th>
-              <th scope="col">Secteur</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% data.body.forEach(contact => { %>
-            <tr>
-              <td class="my-1"><%= contact.lastname %></td>
-              <td class="my-1"><%= contact.firstname %></td>
-              <td class="my-1"><%= contact.email %></td>
-              <td class="my-1"><%= contact.society %></td>
-              <td class="my-1">
-                <address>
-                  N°<%= contact.streetNumber %>, <% if ( contact.typeStreet !=
-                  null) { %> <%= contact.typeStreet %> <% } %> <%=
-                  contact.address %>, <%= contact.codePostal %>
-                </address>
-              </td>
-              <td class="my-1"><%= contact.phone %></td>
-              <td class="my-1"><%= contact.sector %></td>
-              <td class="d-flex justify-content-around">
-                <a
-                  href="/contact/show/1"
-                  id="a-show-1"
-                  class="btn btn-success btn-sm"
-                  >Voir</a
-                >
-                <a
-                  href="/contact/edit/1"
-                  id="a-edit-1"
-                  class="btn btn-warning btn-sm"
-                  >Editer</a
-                >
-                <button
-                  id="btn-delete-1"
-                  data-id="1"
-                  class="btn btn-danger btn-delete btn-sm"
-                >
-                  Supprimer
-                </button>
-              </td>
-            </tr>
-            <% }); %>
-          </tbody>
-        </table>
-        <% } else { %>
-        <div class="alert alert-warning">
-          <p>Aucun contact à présenter actuellement.</p>
-        </div>
-        <% } %>
-      </div>
+      <% } %>
     </div>
   </div>
 </div>

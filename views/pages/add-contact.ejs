@@ -13,7 +13,13 @@
         class="alert alert-danger alert-dismissible fade show mt-5"
         role="alert"
       >
-        <h2 class="my-2">Erreur rencontré</h2>
+        <% if ( errors.tabError.length == 1 ) { %>
+        <h2 class="my-2"><%= errors.tabError.length %> erreur rencontrée</h2>
+        <% } else if ( errors.tabError.length > 1 ) { %>
+        <h2 class="my-2"><%= errors.tabError.length %> erreurs rencontrées</h2>
+        <% } %>
+
+
         <ul class="d-flex flex-column justify-content-start">
           <% errors.tabError.forEach(error => { %>
           <li><%= error %></li>
@@ -157,21 +163,20 @@
             </div>
             <!-- Type de rue -->
             <div class="col-2">
-              <label for="typeStreet" class="form-label text-dark">Type</label>
+              <label for="streetType" class="form-label text-dark">Type</label>
               <select
                 class="form-select"
-                id="typeStreet"
-                name="typeStreet"
-                aria-label="Default select empty"
-                aria-describedby="typeStreetHelp"
+                id="streetType"
+                name="streetType"
+                aria-describedby="streetTypeHelp"
               >
-                <option selected></option>
+                <option></option>
                 <option value="avenue">Avenue</option>
                 <option value="chemin">Chemin</option>
                 <option value="impasse">Impasse</option>
                 <option value="rue">Rue</option>
               </select>
-              <div id="typeStreetHelp" class="form-text">
+              <div id="streetTypeHelp" class="form-text">
                 <i>Sélectionne un élément</i>
               </div>
             </div>

@@ -85,6 +85,7 @@ const postCreateContact = (req, res, next) => {
     streetType: req.body.streetType,
     address: req.body.address,
     codePostal: parseInt(req.body.codePostal),
+    city: req.body.city,
   };
 
   // Tableau d'erreur
@@ -197,6 +198,12 @@ const postCreateContact = (req, res, next) => {
   } else if (typeof contactObject.codePostal != "number") {
     errorMessage[i] =
       'Le champ "Code Postal" doit contenir exclusivement un nombre';
+    i++;
+  }
+
+  // City
+  if (contactObject.city == "") {
+    errorMessage[i] = 'Le champ "Ville" ne peut-être vide';
     i++;
   }
 

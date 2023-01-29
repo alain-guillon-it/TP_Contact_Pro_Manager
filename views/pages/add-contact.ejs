@@ -19,7 +19,6 @@
         <h2 class="my-2"><%= errors.tabError.length %> erreurs rencontrées</h2>
         <% } %>
 
-
         <ul class="d-flex flex-column justify-content-start">
           <% errors.tabError.forEach(error => { %>
           <li><%= error %></li>
@@ -145,7 +144,7 @@
           <!-- Ligne 4 -->
           <div class="row">
             <!-- Numéro de rue -->
-            <div class="col-2">
+            <div class="col-3">
               <label for="streetNumber" class="form-label text-dark">N°</label>
               <input
                 min="1"
@@ -162,8 +161,10 @@
               </div>
             </div>
             <!-- Type de rue -->
-            <div class="col-2">
-              <label for="streetType" class="form-label text-dark">Type</label>
+            <div class="col-3">
+              <label for="streetType" class="form-label text-dark"
+                >Type de rue</label
+              >
               <select
                 class="form-select"
                 id="streetType"
@@ -172,6 +173,7 @@
               >
                 <option></option>
                 <option value="avenue">Avenue</option>
+                <option value="boulevard">Boulevard</option>
                 <option value="chemin">Chemin</option>
                 <option value="impasse">Impasse</option>
                 <option value="rue">Rue</option>
@@ -180,25 +182,25 @@
                 <i>Sélectionne un élément</i>
               </div>
             </div>
-            <!-- Adresse -->
-            <div class="col-6">
-              <label for="addressHelp" class="form-label text-dark"
-                >Adresse</label
-              >
+
+            <!-- Ville -->
+            <div class="col-3">
+              <label for="cityHelp" class="form-label text-dark">Ville</label>
               <input
                 type="text"
-                name="address"
-                id="address"
+                name="city"
+                id="city"
                 class="form-control"
                 aria-describedby="addressHelp"
-                placeholder="Hector Berlioz"
+                placeholder="Meyzieu"
               />
-              <div id="addressHelp" class="form-text">
-                <i>Saisie une adresse</i>
+              <div id="cityHelp" class="form-text">
+                <i>Saisie une ville</i>
               </div>
             </div>
+
             <!-- Code Postal -->
-            <div class="col-2">
+            <div class="col-3">
               <label for="codePostal" class="form-label text-dark">CP</label>
               <input
                 min="1"
@@ -212,6 +214,24 @@
               />
               <div id="codePostalHelp" class="form-text">
                 <i>Saisie un code postal</i>
+              </div>
+            </div>
+
+            <!-- Adresse -->
+            <div class="col-12 mt-3">
+              <label for="addressHelp" class="form-label text-dark"
+                >Complément d'adresse</label
+              >
+              <input
+                type="text"
+                name="address"
+                id="address"
+                class="form-control"
+                aria-describedby="addressHelp"
+                placeholder="Hector Berlioz"
+              />
+              <div id="addressHelp" class="form-text">
+                <i>Saisie un complément adresse</i>
               </div>
             </div>
           </div>
@@ -237,4 +257,5 @@
     </div>
   </div>
 </div>
+
 <%- include("../partials/_footer") %>

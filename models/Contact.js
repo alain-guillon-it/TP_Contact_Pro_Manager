@@ -57,6 +57,10 @@ const ContactSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    city: {
+      type: String,
+      required: true,
+    },
     codePostal: {
       type: Number,
       required: true,

@@ -18,3 +18,10 @@ _Etant une personne qui code à partir de rien, reprendre le code de quelqu'un m
 
 Je suis vraiment peiné par ce projet qui n'apporte rien d'autre que la mise à jour...
 Donc la plus part vont simplement copier coller un projet et l'adapter... ce qui pour moi n'a aucun sens...
+
+## Modification personnel
+
+Je reprends la totalité des fichiers fournis pour les réadapter afin d'avoir un projet professionnel assez digne d'interrêt.
+Reprise de la syntaxe JS, correction des textes qui n'ont rien avoir avec le projet concerner, renommage des fichiers afin de correspondre également au projet.
+
+A mon sens complexifier ce projet m'aidera à travailler plus sérieusement sur cette technologie que de copier un projet tout "pété" afin de bosser avec ... 

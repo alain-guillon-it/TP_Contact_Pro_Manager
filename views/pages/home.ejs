@@ -13,6 +13,7 @@
       </div>
       <!-- Tableau contenant toutes les données respectivement récupérer depuis la base de donnée -->
       <div class="card-content table-responsive">
+        <% if ( data.body.length > 0) { %>
         <table
           class="table table-bordered border-dark table-sm table-secondary table-hover table-striped"
         >
@@ -23,6 +24,7 @@
             <tr class="align-middle">
               <th scope="col">Nom</th>
               <th scope="col">Prénom</th>
+              <th scope="col">Email</th>
               <th scope="col">Société</th>
               <th scope="col">Adresse</th>
               <th scope="col">Téléphone</th>
@@ -31,13 +33,21 @@
             </tr>
           </thead>
           <tbody>
+            <% data.body.forEach(contact => { %>
             <tr>
-              <td class="my-1">Nicolas</td>
-              <td class="my-1">Richard</td>
-              <td class="my-1">Campus Région</td>
-              <td class="my-1">78 Rte de Paris, 69260 Charbonnières</td>
-              <td class="my-1">04 26 73 66 76</td>
-              <td class="my-1">Education</td>
+              <td class="my-1"><%= contact.lastname %>></td>
+              <td class="my-1"><%= contact.firstname %></td>
+              <td class="my-1"><%= contact.email %></td>
+              <td class="my-1"><%= contact.society %></td>
+              <td class="my-1">
+                <address>
+                  N°<%= contact.streetNumber %>, <% if ( contact.typeStreet !=
+                  null) { %> <%= contact.typeStreet %> <% } %> <%=
+                  contact.address %>, <%= contact.codePostal %>
+                </address>
+              </td>
+              <td class="my-1"><%= contact.phone %></td>
+              <td class="my-1"><%= contact.sector %></td>
               <td class="d-flex justify-content-around">
                 <a
                   href="/contact/show/1"
@@ -60,8 +70,14 @@
                 </button>
               </td>
             </tr>
+            <% }); %>
           </tbody>
         </table>
+        <% } else { %>
+        <div class="alert alert-warning">
+          <p>Aucun contact à présenter actuellement.</p>
+        </div>
+        <% } %>
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@
 require("dotenv").config();
 require("colors");
 const boxen = require("boxen");
+const morgan = require("morgan");
 const express = require("express");
 
 /**
@@ -46,9 +47,10 @@ const HOSTNAME = process.env.HOSTNAME || "localhost";
 
 /**
  * ================================================================
- * Utilisation des middleware pour les formulaires
+ * Utilisation de plusieurs middleware
  * ================================================================
  */
+app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 
 /**

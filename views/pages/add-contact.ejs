@@ -7,8 +7,27 @@
       <h1 class="text-uppercase mt-5 text-dark text-center">
         Nouveau contact professionnel
       </h1>
-
-      <hr class="border border-dark border-2 opacity-50" />
+      <!-- ERREUR MESSAGES -->
+      <% if (errors.tabError.length > 0) { %>
+      <div
+        class="alert alert-danger alert-dismissible fade show mt-5"
+        role="alert"
+      >
+        <h2 class="my-2">Erreur rencontré</h2>
+        <ul class="d-flex flex-column justify-content-start">
+          <% errors.tabError.forEach(error => { %>
+          <li><%= error %></li>
+          <% }) %>
+        </ul>
+        <button
+          type="submit"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      <% } %>
+      <hr class="border border-dark border-2 opacity-50 my-5" />
 
       <form action="/contact/add" class="card-body" method="post">
         <div class="mx-5">
@@ -91,7 +110,7 @@
                 aria-label="Default select empty"
                 aria-describedby="sectorHelp"
               >
-                <option selected>...</option>
+                <option selected></option>
                 <option value="informatique">Informatique</option>
                 <option value="education">Education / Formation</option>
                 <option value="sante">Corps médicale</option>
@@ -146,7 +165,7 @@
                 aria-label="Default select empty"
                 aria-describedby="typeStreetHelp"
               >
-                <option selected>...</option>
+                <option selected></option>
                 <option value="avenue">Avenue</option>
                 <option value="chemin">Chemin</option>
                 <option value="impasse">Impasse</option>
@@ -163,7 +182,7 @@
               >
               <input
                 type="text"
-                name="addresse"
+                name="address"
                 id="address"
                 class="form-control"
                 aria-describedby="addressHelp"
@@ -210,23 +229,6 @@
           </div>
         </div>
       </form>
-      <hr class="border border-dark border-2 opacity-50 my-5" />
-
-      <!-- ERREUR MESSAGES -->
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <ul class="d-flex flex-column justify-content-start">
-          <li>Error 1</li>
-          <li>Error 2</li>
-          <li>Error 3</li>
-          <li>Error 4</li>
-        </ul>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
     </div>
   </div>
 </div>

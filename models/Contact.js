@@ -29,9 +29,9 @@ const ContactSchema = mongoose.Schema(
       unique: true,
     },
     phone: {
-      type: Number,
-      min: 10,
-      max: 10,
+      type: String,
+      minLength: 10,
+      maxLength: 10,
       required: true,
     },
     sector: {
@@ -51,6 +51,7 @@ const ContactSchema = mongoose.Schema(
     typeStreet: {
       type: String,
       required: false,
+      default: null,
     },
     address: {
       type: String,

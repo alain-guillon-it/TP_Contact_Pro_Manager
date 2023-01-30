@@ -13,7 +13,7 @@ const ContactModel = require("../models/Contact");
 const getHome = (req, res, next) => {
   ContactModel.find()
     .then((documents) => {
-      console.log(documents);
+      // console.log(documents);
       res.status(200).render("pages/home", {
         data: {
           head: {
@@ -60,7 +60,18 @@ const getUpdateContact = (req, res, next) => {
 };
 
 const getDeleteContact = (req, res, next) => {
-  res.redirect("/");
+  if (req.params.id) {
+    ContactModel.findById({ _id: req.params.id })
+      .then((document) => {
+        // console.log("Exite", document.id);
+        ContactModel.deleteOne(this)
+          .then(() => {
+            res.redirect("/");
+          })
+          .catch();
+      })
+      .catch((err) => next(err.stack));
+  }
 };
 
 const getRedirectToHome = (req, res, next) => {
@@ -214,7 +225,7 @@ const postCreateContact = (req, res, next) => {
   }
 
   if (errorMessage.length > 0) {
-    console.log(errorMessage);
+    // console.log(errorMessage);
     res.status(200).render("pages/add-contact", {
       errors: {
         tabError: errorMessage,

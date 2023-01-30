@@ -32,7 +32,14 @@ router.get("/contact/delete/:id", myController.getDeleteContact);
  * ================================================================
  */
 router.post("/contact/add", myController.postCreateContact);
-router.post("/contact/edit/:id", myController.postUpdateContact);
+router.post("/contact/edit/:id", myController.postUpdateContact); // Controle les champs
+
+/**
+ * ================================================================
+ * ROUTER PATCH
+ * ================================================================
+ */
+router.put("/contact/edit/:id", myController.postUpdateContact); // Mets à jour après le controle des champs
 
 /**
  * ================================================================

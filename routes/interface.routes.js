@@ -19,10 +19,11 @@ const myController = require("../controllers/Interface");
  */
 router.get(["/", "/home"], myController.getHome);
 router.get(
-  ["/contact", "/contact/edit", "/contact/delete"],
+  ["/contact", "/contact/show", "/contact/edit", "/contact/delete"],
   myController.getRedirectToHome
 );
 router.get("/contact/add", myController.getCreateContact);
+router.get("/contact/show/:id", myController.getReadContact);
 router.get("/contact/edit/:id", myController.getUpdateContact);
 router.get("/contact/delete/:id", myController.getDeleteContact);
 

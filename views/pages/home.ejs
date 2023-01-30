@@ -52,19 +52,16 @@
             <td class="my-1"><%= contact.sector %></td>
             <td class="d-flex justify-content-around">
               <a
-                href="/contact/show/1"
-                id="a-show-1"
+                href="/contact/show/<%= contact.id %>"
                 class="btn btn-success btn-sm"
                 >Voir</a
               >
               <a
                 href="/contact/edit/1"
-                id="a-edit-1"
                 class="btn btn-warning btn-sm"
                 >Editer</a
               >
               <button
-                id="btn-delete-1"
                 data-id="<%= contact.id %>"
                 class="btn btn-danger btn-delete btn-sm"
               >

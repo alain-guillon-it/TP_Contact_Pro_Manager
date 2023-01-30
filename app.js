@@ -5,6 +5,8 @@
  */
 require("dotenv").config();
 require("colors");
+const path = require("path");
+const favicon = require("serve-favicon");
 const boxen = require("boxen");
 const morgan = require("morgan");
 const express = require("express");
@@ -51,7 +53,11 @@ const HOSTNAME = process.env.HOSTNAME || "localhost";
  * ================================================================
  */
 app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  favicon(path.join(__dirname, "public", "images", "favicon", "favicon.ico"))
+);
 
 /**
  * ================================================================

@@ -5,36 +5,12 @@
   <div class="row">
     <div class="col-12 card shadow mx-auto mt-5 p-4">
       <h1 class="text-uppercase mt-5 text-dark text-center">
-        Modification du contact professionnel
+        Edition du contact
       </h1>
-      <!-- ERREUR MESSAGES -->
-      <% if (errors.tabError.length > 0) { %>
-      <div
-        class="alert alert-danger alert-dismissible fade show mt-5"
-        role="alert"
-      >
-        <% if ( errors.tabError.length == 1 ) { %>
-        <h2 class="my-2"><%= errors.tabError.length %> erreur rencontrée</h2>
-        <% } else if ( errors.tabError.length > 1 ) { %>
-        <h2 class="my-2"><%= errors.tabError.length %> erreurs rencontrées</h2>
-        <% } %>
 
-        <ul class="d-flex flex-column justify-content-start">
-          <% errors.tabError.forEach(error => { %>
-          <li><%= error %></li>
-          <% }) %>
-        </ul>
-        <button
-          type="submit"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-      <% } %>
-      <hr class="border border-dark border-2 opacity-50 my-5" />
+      <hr class="border border-dark border-2 opacity-50" />
 
-      <form action="/contact/add" class="card-body" method="post">
+      <form action="/contact/edit/id" class="card-body" method="post">
         <div class="mx-5">
           <!-- Ligne 1 -->
           <div class="row">
@@ -48,8 +24,7 @@
                 name="lastname"
                 placeholder="Dupond"
                 type="text"
-                autofocus
-                value=""
+                value="à éditer ici..."
               />
               <div id="lastnameHelp" class="form-text">
                 <i>Un nom doit être compris entre 3 et 50 caractères</i>
@@ -65,7 +40,7 @@
                 name="firstname"
                 aria-describedby="firstnameHelp"
                 placeholder="Jean"
-                value=""
+                value="à éditer ici..."
               />
               <div id="firstnameHelp" class="form-text">
                 <i>Un prénom doit être compris entre 3 et 50 caractères</i>
@@ -84,7 +59,7 @@
                 name="email"
                 placeholder="j.dupond@mon_email.com"
                 type="email"
-                value=""
+                value="à éditer ici..."
               />
               <div id="lastnameHelp" class="form-text">
                 <i>Vous devez saisir obligatoirement un email valide</i>
@@ -100,7 +75,7 @@
                 name="phone"
                 aria-describedby="phoneHelp"
                 placeholder="0600000000"
-                value=""
+                value="à éditer ici..."
               />
               <div id="phoneHelp" class="form-text">
                 <i>Vous devez saisir un téléphone valide</i>
@@ -109,9 +84,11 @@
           </div>
           <!-- Ligne 3 -->
           <div class="row my-4">
-            <!-- Industrie -->
+            <!-- Sector -->
             <div class="col-6">
-              <label for="sector" class="form-label text-dark">Secteur</label>
+              <label for="sector" class="form-label text-dark"
+                >Secteur</label
+              >
               <select
                 class="form-select"
                 id="sector"
@@ -119,14 +96,14 @@
                 aria-label="Default select empty"
                 aria-describedby="sectorHelp"
               >
-                <option></option>
-                <option selected value="informatique">Informatique</option>
-                <option value="education">Education / Formation</option>
+                <option >...</option>
+                <option value="informatique">Informatique</option>
+                <option selected value="education">Education / Formation</option>
                 <option value="sante">Corps médicale</option>
                 <option value="industrie">Industrie</option>
               </select>
               <div id="sectorHelp" class="form-text">
-                <i>Vous devez choisir un élément</i>
+                <i>Vous devez saisir un élément dans la liste</i>
               </div>
             </div>
             <!-- Société -->
@@ -139,7 +116,7 @@
                 name="society"
                 placeholder="Campus Numérique"
                 type="text"
-                value=""
+                value="à éditer ici..."
               />
               <div id="societyHelp" class="form-text">
                 <i>Vous devez saisir un nom de société.</i>
@@ -149,7 +126,7 @@
           <!-- Ligne 4 -->
           <div class="row">
             <!-- Numéro de rue -->
-            <div class="col-3">
+            <div class="col-2">
               <label for="streetNumber" class="form-label text-dark">N°</label>
               <input
                 min="1"
@@ -160,54 +137,52 @@
                 class="form-control"
                 aria-describedby="streetNumberHelp"
                 placeholder="777"
-                value=""
+                value="7899"
               />
               <div id="streetNumberHelp" class="form-text">
                 <i>Saisie un numéro</i>
               </div>
             </div>
             <!-- Type de rue -->
-            <div class="col-3">
-              <label for="streetType" class="form-label text-dark"
-                >Type de rue</label
-              >
+            <div class="col-2">
+              <label for="typeStreet" class="form-label text-dark">Type</label>
               <select
                 class="form-select"
-                id="streetType"
-                name="streetType"
-                aria-describedby="streetTypeHelp"
+                id="typeStreet"
+                name="typeStreet"
+                aria-label="Default select empty"
+                aria-describedby="typeStreetHelp"
               >
-                <option></option>
+                <option >...</option>
                 <option value="avenue">Avenue</option>
-                <option value="boulevard">Boulevard</option>
-                <option value="chemin">Chemin</option>
+                <option selected value="chemin">Chemin</optionselected>
                 <option value="impasse">Impasse</option>
-                <option selected value="rue">Rue</option>
+                <option value="rue">Rue</option>
               </select>
-              <div id="streetTypeHelp" class="form-text">
+              <div id="typeStreetHelp" class="form-text">
                 <i>Sélectionne un élément</i>
               </div>
             </div>
-
-            <!-- Ville -->
-            <div class="col-3">
-              <label for="cityHelp" class="form-label text-dark">Ville</label>
+            <!-- Adresse -->
+            <div class="col-6">
+              <label for="addressHelp" class="form-label text-dark"
+                >Adresse</label
+              >
               <input
                 type="text"
-                name="city"
-                id="city"
+                name="address"
+                id="address"
                 class="form-control"
                 aria-describedby="addressHelp"
-                placeholder="Meyzieu"
-                value=""
+                placeholder="Hector Berlioz"
+                value="Henry Le Blanc"
               />
-              <div id="cityHelp" class="form-text">
-                <i>Saisie une ville</i>
+              <div id="addressHelp" class="form-text">
+                <i>Saisie une adresse</i>
               </div>
             </div>
-
             <!-- Code Postal -->
-            <div class="col-3">
+            <div class="col-2">
               <label for="codePostal" class="form-label text-dark">CP</label>
               <input
                 min="1"
@@ -218,29 +193,10 @@
                 class="form-control"
                 aria-describedby="codePostalHelp"
                 placeholder="69001"
-                value=""
+                value="69999"
               />
               <div id="codePostalHelp" class="form-text">
                 <i>Saisie un code postal</i>
-              </div>
-            </div>
-
-            <!-- Adresse -->
-            <div class="col-12 mt-3">
-              <label for="addressHelp" class="form-label text-dark"
-                >Complément d'adresse</label
-              >
-              <input
-                type="text"
-                name="address"
-                id="address"
-                class="form-control"
-                aria-describedby="addressHelp"
-                placeholder="Hector Berlioz"
-                value=""
-              />
-              <div id="addressHelp" class="form-text">
-                <i>Saisie un complément adresse</i>
               </div>
             </div>
           </div>
@@ -257,14 +213,30 @@
                 id="new-contact-submit"
                 class="btn btn-outline-warning btn-lg btn-block text-uppercase"
               >
-                Valider les changements du contact
+                Valider les changements
               </button>
             </div>
           </div>
         </div>
       </form>
+      <hr class="border border-dark border-2 opacity-50 my-5" />
+
+      <!-- ERREUR MESSAGES -->
+      <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+        <ul class="d-flex flex-column justify-content-start">
+          <li>Error 1</li>
+          <li>Error 2</li>
+          <li>Error 3</li>
+          <li>Error 4</li>
+        </ul>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
     </div>
   </div>
 </div>
-
 <%- include("../partials/_footer") %>

@@ -40,7 +40,7 @@ router.post("/contact/edit/:id", myController.postUpdateContact); // Controle le
  * ROUTER PATCH
  * ================================================================
  */
-router.put("/contact/edit/:id", myController.postUpdateContact); // Mets à jour après le controle des champs
+router.put("/contact/edit/:id", myController.putUpdateContact); // Mets à jour après le controle des champs
 
 /**
  * ================================================================

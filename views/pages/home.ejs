@@ -1,4 +1,4 @@
-<%- include("../partials/_header") %>
+<%- include("../templates/_header") %>
 
 <!-- PROJET -->
 <div class="p-5 text-center">
@@ -15,13 +15,13 @@
 
     <!-- Tableau contenant toutes les données respectivement récupérer depuis la base de donnée -->
     <div class="card-content table-responsive">
-      <% if ( data.body.length > 0) { %>
+      <% if ( contacts.length > 0) { %>
       <table
         class="table table-bordered border-dark table-sm table-secondary table-hover table-striped"
       >
         <caption class="text-end">
-          <% if (data.body.length == 1) { %> Mon contact professionnel. <% }
-          else { %> Tableau représentant la liste de mes <%= data.body.length %>
+          <% if (contacts.length == 1) { %> Mon contact professionnel. <% } else
+          { %> Tableau représentant la liste de mes <%= contacts.length %>
           contacts professionnel. <% } %>
         </caption>
         <thead class="table-dark">
@@ -36,7 +36,7 @@
           </tr>
         </thead>
         <tbody>
-          <% data.body.forEach(contact => { %>
+          <%  contacts.forEach(contact => { %>
           <tr>
             <td class="my-1">
               <%= contact.lastname %> <%= contact.firstname %>
@@ -81,4 +81,4 @@
   </div>
 </div>
 
-<%- include("../partials/_footer") %>
+<%- include("../templates/_footer") %>
